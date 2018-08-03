@@ -1,1 +1,7 @@
-{}
+{
+  "arrowParens": "avoid",
+  "cursorOffset": -1,
+  "jsxBracketSameLine": false,
+  "semi": false,
+  "singleQuote": true
+}
