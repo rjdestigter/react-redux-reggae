@@ -1,12 +1,12 @@
 import * as React from 'react'
-import ReactDOMServer from 'react-dom/server'
+import * as ReactDOMServer from 'react-dom/server'
 import { Action, createStore, Store } from 'redux'
 
-import combineReggaeReducers from '../combineReggaeReducers'
-import ReggaeReducer from '../ReggaeReducer'
+import combineReggaeReducers from '../src/combineReggaeReducers'
+import ReggaeReducer from '../src/ReggaeReducer'
 
-import connect from '../connect'
-import reggaifyStore from '../reggaeifyStore'
+import connect from '../src/connect'
+import reggaifyStore from '../src/reggaeifyStore'
 
 interface State {
   data: number[]
@@ -24,22 +24,22 @@ export const remove = (): RemoveAction => ({ type: 'REMOVE' })
 
 const initialState: State = {
   data: [],
-  label: 'Example 1',
+  label: 'Example 1'
 }
 
-const initialState2: State = {
+const State = {
   data: [],
-  label: 'Example 2',
+  label: 'Example 2'
 }
 
 const reducer = (
   state: State | undefined = initialState,
-  action: AddAction | RemoveAction,
+  action: AddAction | RemoveAction
 ): State => {
   if (action.type === 'ADD') {
     return {
       ...state,
-      data: [...state.data, action.payload],
+      data: [...state.data, action.payload]
     }
   }
 
@@ -47,16 +47,16 @@ const reducer = (
 
   return {
     ...state,
-    data: tail,
+    data: tail
   }
 }
 
-export const reggae = ReggaeReducer.create(initialState, reducer)
-export const reggae2 = ReggaeReducer.create(initialState2, reducer)
+export const reggae = ReggaeReducer.create(reducer)
+export const reggae2 = ReggaeReducer.create(reducer)
 
 export const combinedReggae = combineReggaeReducers({
   foo: reggae,
-  bar: reggae2,
+  bar: reggae2
 })
 
 const subscribers: Array<() => void> = []

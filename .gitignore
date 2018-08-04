@@ -1,5 +1,6 @@
 node_modules
 .vscode
-/build/compiled
-/index.d.ts
-/index.min.js
+/es
+/lib
+/dist
+/src/*.js
